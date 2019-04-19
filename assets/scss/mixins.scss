@@ -1,0 +1,11 @@
+// 全局mixins
+
+@mixin clearfix {
+  &:after {
+    display: block;
+    visibility: hidden;
+    height: 0;
+    content: '.';
+    clear: both;
+  }
+}

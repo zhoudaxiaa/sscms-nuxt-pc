@@ -1,0 +1,55 @@
+// 基础公共样式
+
+html {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.w1200 {
+  @include clearfix;
+
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.main-lf {
+  float: left;
+  width: 65%;
+}
+
+.main-rt {
+  float: right;
+  width: 33.7%;
+}
+
+@media screen and (max-width: 1200px) {
+  .w1200 {
+    width: 970px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .w1200 {
+    width: 720px;
+  }
+
+  .main-lf {
+    width: 100%;
+  }
+
+  .main-rt {
+    display: none;
+  }
+}
