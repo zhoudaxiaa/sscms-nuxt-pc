@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-16 14:48:46
- * @LastEditTime: 2019-04-16 15:16:30
+ * @LastEditTime: 2019-04-21 10:54:27
  -->
 <template>
   <div class="title-nav">
@@ -42,7 +42,6 @@ export default {
 .title-nav-text {
   line-height: 30px;
   font-size: 20px;
-  font-weight: 500;
   color: #409EFF;
   border-bottom: 2px solid #409EFF;
 }

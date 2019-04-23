@@ -1,8 +1,7 @@
 // 基础公共样式
 
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Source Han Sans CN,sans-serif;
   font-size: 16px;
   box-sizing: border-box;
 }
@@ -17,6 +16,11 @@ body {
   box-sizing: border-box;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-size: inherit;
+  font-weight: normal;
+}
+
 .w1200 {
   @include clearfix;
 
@@ -26,12 +30,12 @@ body {
 
 .main-lf {
   float: left;
-  width: 65%;
+  width: 66.5%;
 }
 
 .main-rt {
   float: right;
-  width: 33.7%;
+  width: 32%;
 }
 
 @media screen and (max-width: 1200px) {

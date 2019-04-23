@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-19 15:14:01
- * @LastEditTime: 2019-04-19 15:14:51
+ * @LastEditTime: 2019-04-21 13:30:56
  -->
 <template>
   <!-- art: article -->
@@ -33,10 +33,11 @@
       <!-- 文章属性列表开始 -->
       <ul class="art-attr-list">
         <li class="art-attr-list-item">
-          <nuxt-link to="">
-            <img class="atr-avatar" src="//unsplash.it/22/22" alt="">
-            <span class="art-attr-text">周大侠啊</span>
-          </nuxt-link>
+          <avatar-box
+            link='/'
+            avatar="//unsplash.it/22/22"
+            name="周大侠啊">
+          </avatar-box>
         </li>
         <li class="art-attr-list-item">
           <svg-text-box
@@ -73,12 +74,14 @@
 <script>
 import ArticleTag from '@/components/ArticleTag'
 import SvgTextBox from '@/components/SvgTextBox'
+import AvatarBox from '@/components/AvatarBox'
 
 export default {
   name: 'Item',
   components: {
     ArticleTag,
-    SvgTextBox
+    SvgTextBox,
+    AvatarBox,
   }
 }
 </script>
@@ -138,19 +141,6 @@ export default {
 .art-attr-list-item {
   float: left;
   margin-right: 8px;
-}
-
-.atr-avatar {
-  margin-right: 10px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-
-.art-attr-text {
-  font-size: 13px;
-  color: #999;
 }
 
 .view-art {

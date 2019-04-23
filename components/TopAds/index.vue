@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-19 14:57:05
- * @LastEditTime: 2019-04-19 15:03:48
+ * @LastEditTime: 2019-04-21 12:41:04
  -->
 
 <template>
@@ -30,7 +30,6 @@ export default {
 <style lang="scss" scoped>
 .top-ads {
   width: 100%;
-  max-width: 400px;
   max-height: 250px;
 }
 </style>
