@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-19 14:57:05
- * @LastEditTime: 2019-04-21 12:41:04
+ * @LastEditTime: 2019-05-15 10:02:00
  -->
 
 <template>
@@ -31,5 +31,6 @@ export default {
 .top-ads {
   width: 100%;
   max-height: 250px;
+  margin-bottom: 20px;
 }
 </style>

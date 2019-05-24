@@ -2,14 +2,14 @@
  * @Author: zhoudaxiaa
  * @Github: https://
  * @Website: https://
- * @Description: 文章列表
+ * @Description: 分类列表
  * @Version: 1.0
+ * @Date: 2019-05-20 15:12:52
  * @LastEditors: zhoudaxiaa
- * @Date: 2019-04-16 13:44:33
- * @LastEditTime: 2019-05-20 16:24:14
+ * @LastEditTime: 2019-05-20 16:23:28
  -->
 <template>
-  <section class="article-list">
+  <section class="category-list">
     <item></item>
     <item></item>
     <item></item>
@@ -22,7 +22,7 @@
 import Item from './Item'
 
 export default {
-  name: 'ArticleList',
+  name: 'CategoryList',
   components: {
     Item
   }

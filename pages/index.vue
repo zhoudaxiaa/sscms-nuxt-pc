@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-08 14:34:44
- * @LastEditTime: 2019-04-21 17:09:28
+ * @LastEditTime: 2019-05-20 14:34:53
  -->
 
 <template>
@@ -139,10 +139,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main-wrap {
-  margin-top: 80px;
-  margin-bottom: 100px;
-}
 
 .swiper-slide {
   img {

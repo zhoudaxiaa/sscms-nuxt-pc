@@ -6,13 +6,13 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-21 11:08:32
- * @LastEditTime: 2019-04-21 12:53:11
+ * @LastEditTime: 2019-05-20 16:23:45
  -->
 
 <template>
-  <div class="panel-box">
+  <section class="panel-box">
     <slot></slot>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 .panel-box {
-  margin-top: 15px;
+  margin-bottom: 15px;
   padding: 15px 15px 25px;
   background-color: #fff;
 }

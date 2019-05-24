@@ -2,56 +2,57 @@
  * @Author: zhoudaxiaa
  * @Github: https://
  * @Website: https://
- * @Description: 文章列表单个封面
+ * @Description: 专栏列表单个
  * @Version: 1.0
+ * @Date: 2019-05-20 14:18:37
  * @LastEditors: zhoudaxiaa
- * @Date: 2019-04-19 15:14:01
- * @LastEditTime: 2019-05-20 14:19:00
+ * @LastEditTime: 2019-05-20 14:59:01
  -->
-<template>
-  <!-- art: article -->
-  <article class="art-list-item">
 
-    <div class="art-cover">
-      <img class="art-img" src="//unsplash.it/240/150" alt="">
+<template>
+  <!-- col: column -->
+  <article class="col-list-item">
+
+    <div class="col-cover">
+      <img class="col-img" src="//unsplash.it/240/150" alt="">
       
-      <article-tag class="art-tag-wrap"></article-tag>
+      <article-tag class="col-tag-wrap"></article-tag>
 
     </div>
 
     <!-- attr: attribute -->
-    <div class="art-attr-wrap">
+    <div class="col-attr-wrap">
       
-      <h3 class="art-title">
+      <h3 class="col-title">
         <nuxt-link to="">
           sscms 内容管理系统正式发布
         </nuxt-link>
       </h3>
       
-      <p class="art-introduce">适得府君书雷锋精神垃圾分类设计啊安防连接收到拉法基谁拉的减肥啦时代峻峰四邻非旧识雷锋精神劳动节封龙山剪短发链接时理解的斐林试剂</p>
+      <p class="col-introduce">适得府君书雷锋精神垃圾分类设计啊安防连接收到拉法基谁拉的减肥啦时代峻峰四邻非旧识雷锋精神劳动节封龙山剪短发链接时理解的斐林试剂</p>
       
       <!-- 文章属性列表开始 -->
-      <ul class="art-attr-list">
-        <li class="art-attr-list-item">
+      <ul class="col-attr-list">
+        <li class="col-attr-list-item">
           <avatar-box
             link='/'
             avatar="//unsplash.it/22/22"
             name="周大侠啊">
           </avatar-box>
         </li>
-        <li class="art-attr-list-item">
+        <li class="col-attr-list-item">
           <svg-text-box
             iconClass="time"
             text="999">
           </svg-text-box>
         </li>
-        <li class="art-attr-list-item">
+        <li class="col-attr-list-item">
           <svg-text-box
             iconClass="view"
             text="999">
           </svg-text-box>
         </li>
-        <li class="art-attr-list-item">
+        <li class="col-attr-list-item">
           <svg-text-box
             iconClass="comment"
             text="999">
@@ -60,11 +61,10 @@
       </ul>
       <!-- 文章属性列表结束 -->
 
-      <nuxt-link
-        class="view-art"
-        to="">
-        阅读全文
-      </nuxt-link>
+      <span
+        class="btn-col-follow">
+        关注专栏
+      </span>
 
     </div>
 
@@ -87,38 +87,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.art-list-item {
+.col-list-item {
   @include clearfix;
 
   padding: 20px 0;
   border-bottom: 1px solid #efefef;
 }
 
-.art-cover {
+.col-cover {
   position: relative;
   float: left;
 }
 
-.art-img {
+.col-img {
   width: 240px;
   height: 150px;
 }
 
-.art-tag-wrap {
+.col-tag-wrap {
   position: absolute;
   top: 10px;
   left: 10px;
 }
 
-.art-attr-list {
+.col-attr-list {
   float: left;
 }
 
-.art-attr-wrap {
+.col-attr-wrap {
   padding-left: 260px;
 }
 
-.art-title {
+.col-title {
   height: 25px;
   line-height: 25px;
 
@@ -129,7 +129,7 @@ export default {
   }
 }
 
-.art-introduce {
+.col-introduce {
   margin: 10px 0;
   font-size: 13px;
   color: $textColor;
@@ -138,18 +138,19 @@ export default {
   line-height: 1.8;
 }
 
-.art-attr-list-item {
+.col-attr-list-item {
   float: left;
   margin-right: 8px;
 }
 
-.view-art {
+.btn-col-follow {
   float: right;
   padding: 5px 10px;
   background-color: $activeColor;
   font-size: 14px;
   color: #fff;
   border-radius: 5px;
+  cursor: pointer;
 
   &:hover {
     background-color: $activeHoverColor;

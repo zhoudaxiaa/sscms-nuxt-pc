@@ -6,10 +6,10 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-17 15:57:44
- * @LastEditTime: 2019-04-17 17:10:17
+ * @LastEditTime: 2019-05-20 16:23:54
  -->
 <template>
-  <div class="pagenation">
+  <section class="pagenation">
     <span class="page-total">
       共 12313 条
     </span>
@@ -42,7 +42,7 @@
       <svg-icon icon-class="arrow-right"></svg-icon>
     </span>
 
-  </div>
+  </section>
 </template>
 
 <script>

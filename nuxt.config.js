@@ -34,8 +34,8 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     'swiper/dist/css/swiper.css',
+    'normalize.css',
     '@/assets/scss/global.scss',
-    'normalize.css'
   ],
 
   /*
