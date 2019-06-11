@@ -4,7 +4,7 @@
 
       <!-- logo开始 -->
       <nuxt-link to="/">
-        <img class="logo" src="https://www.html-js.cn/themes/dorawhite/images/logo.png">
+        <img class="logo" :src="siteData.logo">
       </nuxt-link>
       <!-- logo结束 -->
 
@@ -17,38 +17,27 @@
           ref="scrollWrap">
 
           <ul class="nav-list">
-            <li class="nav-item">
+            <li
+              class="nav-item">
               <nuxt-link
-                class="active"
-                to="">
+                :class="{'active' : '/' === $route.path}"
+                to="/">
                 首页
               </nuxt-link>
             </li>
-            <li class="nav-item">
-              <nuxt-link to="">
-                技术专栏
-              </nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link to="">
-                文章分类
-              </nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link to="">
-                留言板
-              </nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link to="">
-                关于我
-              </nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link to="">
-                关于我
-              </nuxt-link>
-            </li>
+
+            <template v-for="item in navData">
+              <li
+                :key="item.id"
+                class="nav-item">
+                <nuxt-link
+                  :class="{'active' : item.link === $route.path}"
+                  :to="item.link">
+                  {{item.name}}
+                </nuxt-link>
+              </li>
+            </template>
+
           </ul>
         </div>
 
@@ -89,11 +78,37 @@
 </template>
 
 <script>
+import apiPath from '@/config/apiPath'
 
 export default {
   name: 'VHeader',
 
+  props: {
+    siteData: {
+      type: Object,
+      default: () => {}
+    }
+  },
+
+  data () {
+    return {
+      navData: [],
+    }
+  },
+
+  created () {
+    this.initData()
+  },
+
   methods: {
+    async initData () {
+
+      let [ navData ] = await Promise.all([
+        this.$axios.get(apiPath.v1.nav)
+      ])
+
+      this.navData = navData.list
+    },
     scroll (e) {
       let wheelData = e.wheelDelta || e.deltaY
       let scrollWrap = this.$refs.scrollWrap

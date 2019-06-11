@@ -6,19 +6,25 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-17 13:51:52
- * @LastEditTime: 2019-04-17 14:10:45
+ * @LastEditTime: 2019-06-11 16:04:11
  -->
 
 <template>
   <!-- art: article -->
   <span class="art-tag">
-    原创
+    {{tag ? '原创' : '转载'}}
   </span>
 </template>
 
 <script>
 export default {
-  name: 'ArticleTag'
+  name: 'ArticleTag',
+  props: {
+    tag: {
+      type: Number,
+      default: 0
+    }
+  }
 }
 </script>
 

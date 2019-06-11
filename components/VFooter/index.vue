@@ -6,21 +6,20 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-21 16:48:44
- * @LastEditTime: 2019-05-15 14:35:19
+ * @LastEditTime: 2019-06-11 14:07:35
  -->
 <template>
   <footer class="footer">
     <div class="w1200">
 
       <ul class="qr-code">
-        <li>
-          <img src="//unsplash.it/100/100" alt="">
-          <p>微信公众号</p>
-        </li>
-        <li>
-          <img src="//unsplash.it/100/100" alt="">
-          <p>博主微信号</p>
-        </li>
+        <template v-for="item in qrCode">
+          <li :key="item.id">
+            <img :src="item.img_url">
+            <p>{{item.introduce}}</p>
+          </li>
+        </template>
+
       </ul>
       <div class="foot-cont">
         <h6>博客说明：</h6>
@@ -29,8 +28,8 @@
         <div class="copyright">
           <span>自豪的采用</span>
           <nuxt-link to="">SSCMS V1.0</nuxt-link>
-          <span>Copyright (c) 2018 </span>
-          <nuxt-link to="">京ICP备18017863号-1</nuxt-link>
+          <span>Copyright (c) {{siteData.site_copyright}} </span>
+          <nuxt-link to="">{{siteData.site_icp}}</nuxt-link>
           <span>All Rights Reserved</span>
           <nuxt-link to="">站点地图</nuxt-link>
         </div>
@@ -42,7 +41,18 @@
 
 <script>
 export default {
-  name: 'VFooter'
+  name: 'VFooter',
+
+  props: {
+    siteData: {
+      type: Object,
+      default: () => {}
+    },
+    qrCode: {
+      type: Array,
+      default: () => []
+    },
+  }
 }
 </script>
 

@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-21 11:20:33
- * @LastEditTime: 2019-04-21 12:16:33
+ * @LastEditTime: 2019-06-10 23:09:40
  -->
 
 <template>
@@ -16,34 +16,18 @@
       <sub-title title="热门文章"></sub-title>
 
       <ul class="art-hot-list">
-        <li class="art-hot-item">
-          <nuxt-link to="">
-            <h4 class="art-hot-title">
-              阿双方均连接收到拉法基撒发动机
-            </h4>
-          </nuxt-link>
-        </li>
-        <li class="art-hot-item">
-          <nuxt-link to="">
-            <h4 class="art-hot-title">
-              阿双方均连接收到拉法基撒发动机
-            </h4>
-          </nuxt-link>
-        </li>
-        <li class="art-hot-item">
-          <nuxt-link to="">
-            <h4 class="art-hot-title">
-              阿双方均连接收到拉法基撒发动机
-            </h4>
-          </nuxt-link>
-        </li>
-        <li class="art-hot-item">
-          <nuxt-link to="">
-            <h4 class="art-hot-title">
-              阿双方均连接收到拉法基撒发动机
-            </h4>
-          </nuxt-link>
-        </li>
+        <template v-for="item in hotArticle.list">
+          <li
+            :key="item.id"
+            class="art-hot-item">
+            <nuxt-link to="">
+              <h4 class="art-hot-title">
+                {{item.title}}
+              </h4>
+            </nuxt-link>
+          </li>
+        </template>
+        
       </ul>
 
     </div>
@@ -56,6 +40,12 @@ import SubTitle from '@/components/SubTitle'
 
 export default {
   name: 'ArticleHot',
+  props: {
+    hotArticle: {
+      type: Object,
+      default: () => {}
+    }
+  },
   components: {
     PanelBox,
     SubTitle,

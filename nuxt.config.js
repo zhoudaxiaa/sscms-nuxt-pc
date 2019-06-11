@@ -36,6 +36,7 @@ module.exports = {
     'swiper/dist/css/swiper.css',
     'normalize.css',
     '@/assets/scss/global.scss',
+    'github-markdown-css/github-markdown.css',
   ],
 
   /*
@@ -43,7 +44,13 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    { src: '@/plugins/swiper', mode: 'client' }
+    {
+      src: '@/plugins/swiper',
+      mode: 'client'
+    },
+    {
+      src: '@/plugins/axios',
+    }
   ],
 
   /*
@@ -52,7 +59,21 @@ module.exports = {
   modules: [
     // @nuxtjs/style-resources 插件，sass 全局导入变量和mixins
     '@nuxtjs/style-resources',
+    '@nuxtjs/axios',
   ],
+
+  axios: {
+    prefix: '/api',
+    proxy: true,
+    credentials: true,
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'http://127.0.0.1:3000',
+      pathRewrite: {'^/api/': ''},
+    }
+  },
 
   styleResources: {
     sass: [

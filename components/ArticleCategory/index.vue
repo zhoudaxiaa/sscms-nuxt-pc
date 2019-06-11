@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-19 16:16:15
- * @LastEditTime: 2019-04-21 12:15:06
+ * @LastEditTime: 2019-06-09 18:23:25
  -->
 
 <template>
@@ -16,30 +16,17 @@
       <sub-title title="文章分类"></sub-title>
 
       <ul class="art-cate-list">
-        <li class="art-cate-item">
-          <nuxt-link to="">
-            <h4 class="art-cate-title">进击的javascript</h4>
-            <span class="art-cate-art-num">11篇</span>
-          </nuxt-link>
-        </li>
-        <li class="art-cate-item">
-          <nuxt-link to="">
-            <h4 class="art-cate-title">进击的javascript</h4>
-            <span class="art-cate-art-num">11篇</span>
-          </nuxt-link>
-        </li>
-        <li class="art-cate-item">
-          <nuxt-link to="">
-            <h4 class="art-cate-title">进击的javascript</h4>
-            <span class="art-cate-art-num">11篇</span>
-          </nuxt-link>
-        </li>
-        <li class="art-cate-item">
-          <nuxt-link to="">
-            <h4 class="art-cate-title">进击的javascript</h4>
-            <span class="art-cate-art-num">11篇</span>
-          </nuxt-link>
-        </li>
+        <template v-for="item in category.list">
+          <li
+            class="art-cate-item"
+            :key="item.id">
+            <nuxt-link to="">
+              <h4 class="art-cate-title">{{item.name}}</h4>
+              <span class="art-cate-art-num">{{item.article.length}}</span>
+            </nuxt-link>
+          </li>
+        </template>
+
       </ul>
     </div>
   </panel-box>
@@ -51,6 +38,12 @@ import SubTitle from '@/components/SubTitle'
 
 export default {
   name: 'ArticleCategory',
+  props: {
+    category: {
+      type: Object,
+      default: () => {}
+    }
+  },
   components: {
     PanelBox,
     SubTitle,

@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-17 15:19:23
- * @LastEditTime: 2019-04-17 15:28:40
+ * @LastEditTime: 2019-06-10 23:42:53
  -->
 
 <template>
@@ -25,7 +25,7 @@ export default {
       default: '',
     },
     text: {
-      type: String,
+      type: String|Number,
       default: ''
     }
   }

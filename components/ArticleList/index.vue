@@ -6,15 +6,13 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-16 13:44:33
- * @LastEditTime: 2019-05-20 16:24:14
+ * @LastEditTime: 2019-06-09 20:27:07
  -->
 <template>
   <section class="article-list">
-    <item></item>
-    <item></item>
-    <item></item>
-    <item></item>
-    <item></item>
+    <template v-for="item in articleData.list">
+      <item :key="item.id" :article="item"></item>
+    </template>
   </section>
 </template>
 
@@ -23,6 +21,12 @@ import Item from './Item'
 
 export default {
   name: 'ArticleList',
+  props: {
+    articleData: {
+      type: Object,
+      default: () => {}
+    },
+  },
   components: {
     Item
   }

@@ -6,44 +6,47 @@
  * @Version: 1.0
  * @Date: 2019-05-20 15:15:44
  * @LastEditors: zhoudaxiaa
- * @LastEditTime: 2019-05-21 13:00:54
+ * @LastEditTime: 2019-06-11 14:18:45
  -->
 <template>
   
   <!-- cate: category -->
   <div class="cate-list-item">
+    <nuxt-link to="">
 
-    <h2 class="cate-title">前端</h2>
+      <h2 class="cate-title">{{category.name}}</h2>
 
-    <!-- attr: attribute -->
-    <div class="cate-attr-wrap">
-      <ul class="cate-attr-list">
-        <li class="cate-attr-item">
-          <svg-icon
-            icon-class="article">
-          </svg-icon>
-          <span>9篇</span>
-        </li>
+      <!-- attr: attribute -->
+      <div class="cate-attr-wrap">
+        <ul class="cate-attr-list">
+          <li class="cate-attr-item">
+            <svg-icon
+              icon-class="article">
+            </svg-icon>
+            <span>{{category.article.length}}篇</span>
+          </li>
 
-        <li class="cate-attr-item">
-          <svg-icon
-            icon-class="view">
-          </svg-icon>
-          <span>999</span>
-        </li>
+          <li class="cate-attr-item">
+            <svg-icon
+              icon-class="view">
+            </svg-icon>
+            <span>{{viewNum}}</span>
+          </li>
 
-        <li class="cate-attr-item">
-          <svg-icon
-            icon-class="comment">
-          </svg-icon>
-          <span>999</span>
-        </li>
-      </ul>
+          <li class="cate-attr-item">
+            <svg-icon
+              icon-class="comment">
+            </svg-icon>
+            <span>{{commentNum}}</span>
+          </li>
+        </ul>
 
-      <div class="btn-view-cate">
-        查看分类
+        <div class="btn-view-cate">
+          查看分类
+        </div>
       </div>
-    </div>
+
+    </nuxt-link>
 
   </div>
 
@@ -56,10 +59,29 @@ import AvatarBox from '@/components/AvatarBox'
 
 export default {
   name: 'Item',
+  props: {
+    category: {
+      type: Object,
+      default: () => {}
+    }
+  },
   components: {
     ArticleTag,
     SvgTextBox,
     AvatarBox,
+  },
+  computed: {
+    viewNum () {
+      return this.category.article.reduce((total, v) => {
+        return total + v.view_num
+      }, 0)
+    },
+    commentNum () {
+      return this.category.article.reduce((total, v) => {
+        return total + v.comment_id.length
+      }, 0)
+    },
+    
   }
 }
 </script>

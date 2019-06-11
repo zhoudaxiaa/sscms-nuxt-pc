@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @Date: 2019-05-20 16:43:09
  * @LastEditors: zhoudaxiaa
- * @LastEditTime: 2019-05-20 16:44:39
+ * @LastEditTime: 2019-06-11 13:59:14
  -->
 <template>
   <section class="main-wrap w1200">
@@ -17,9 +17,9 @@
       <!-- cate: category-->
       <div class="cate-wrap">
 
-        <!-- 专栏列表开始 -->
-        <category-list></category-list>
-        <!-- 专栏列表结束 -->
+        <!-- 分类列表开始 -->
+        <category-list :categoryData="categoryData"></category-list>
+        <!-- 分类列表结束 -->
         
       </div>
 
@@ -32,11 +32,11 @@
       <div class="main-rt-cont">
 
         <!-- 文章分类开始 -->
-        <article-category></article-category>
+        <article-category :category="categoryData"></article-category>
         <!-- 文章分类结束 -->
 
         <!-- 最新文章开始 -->
-        <article-hot></article-hot>
+        <article-hot :hotArticle="hotArticle"></article-hot>
         <!-- 最新文章结束 -->
 
       </div>
@@ -54,11 +54,27 @@ import CategoryList from '@/components/CategoryList'
 import ArticleCategory from '@/components/ArticleCategory'
 import ArticleHot from '@/components/ArticleHot'
 
+import apiPath from '@/config/apiPath'
+
 export default {
   components: {
     CategoryList,
     ArticleCategory,
     ArticleHot,
+  },
+  async asyncData ({ app }) {
+    let [
+      categoryData,
+      hotArticle,
+    ] = await Promise.all([
+      app.$axios.get(`${apiPath.baseUrl}${apiPath.v1.category}?start=0&count=10sortBy=sort`),
+      app.$axios.get(`${apiPath.baseUrl}${apiPath.v1.article}/hot?start=0&count=10`),
+    ])
+
+    return {
+      categoryData,
+      hotArticle,
+    }
   }
 }
 </script>

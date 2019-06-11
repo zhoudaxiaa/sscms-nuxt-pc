@@ -6,7 +6,7 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-05-13 09:39:51
- * @LastEditTime: 2019-05-20 14:34:32
+ * @LastEditTime: 2019-06-11 18:41:51
  -->
 <template>
   <section class="main-wrap w1200">
@@ -17,30 +17,31 @@
       <!-- 文章容器开始 -->
       <!-- art: article -->
       <div class="art-wrap">
-        <h1 class="art-title">头发睡懒觉</h1>
+        <h1 class="art-title">{{articleData.title}}</h1>
 
         <!-- 文章属性开始 -->
         <!-- attr: attribute -->
         <ul class="art-attr">
           <li class="art-author">
             <nuxt-link to="">
-              周大侠啊
+              {{articleData.author.name}}
             </nuxt-link>
           </li>
           <li class="art-category">
             <nuxt-link to="">
-              javascript
+              {{articleData.category[0].name}}
             </nuxt-link>
           </li>
-          <li>2019-11-01</li>
-          <li>阅读量1119</li>
+          <li>{{articleData.publish_time}}</li>
+          <li>阅读量{{articleData.view_num}}</li>
         </ul>
         <!-- 文章属性结束 -->
 
         <!-- 文章内容开始 -->
         <!-- cont: content -->
-        <div class="art-cont">
-          WebRTC，名称源自网页实时通信（Web Real-Time Communication）的缩写，是一个支持网页浏览器进行实时语音对话或视频对话的技术，是谷歌2010年以6820万美元收购Global IP Solutions公司而获得的一项技术。2011年5月开放了工程的源代码，在行业内得到了广泛的支持和应用，成为下一代视频通话的标准。WebRTC 技术带来的便利是，不需要native(ios或android)支持，直接通过浏览器就可以进行视频语音通信，这在直播或者视频直连、文字通信等方面意义重大
+        <div
+          class="art-cont markdown-body"
+          v-html='articleData.content_word'>
         </div>
         <!-- 文章内容结束 -->
 
@@ -67,7 +68,7 @@
               喜欢
             </span>
             <span class="like-num">
-              66
+              {{articleData.like_num || 0}}
             </span>
           </div>
           <!-- 喜欢结束 -->
@@ -161,7 +162,7 @@
       <!-- 文章容器结束 -->
 
       <!-- 推荐文章开始 -->
-      <article-recommend></article-recommend>
+      <article-recommend :topArticle="topArticle"></article-recommend>
       <!-- 推荐文章结束 -->
 
     </div>
@@ -173,12 +174,13 @@
       <div class="main-rt-cont">
 
         <!-- 文章分类开始 -->
-        <article-category></article-category>
+        <article-category :category="categoryData">
+        </article-category>
         <!-- 文章分类结束 -->
 
-        <!-- 最新文章开始 -->
-        <article-hot></article-hot>
-        <!-- 最新文章结束 -->
+        <!-- 热门文章开始 -->
+        <article-hot :hotArticle="hotArticle"></article-hot>
+        <!-- 热门文章结束 -->
 
       </div>
       <!-- 右侧内容结束 -->
@@ -195,12 +197,40 @@ import ArticleRecommend from '@/components/ArticleRecommend'
 import ArticleCategory from '@/components/ArticleCategory'
 import ArticleHot from '@/components/ArticleHot'
 
+import apiPath from '@/config/apiPath'
+
 export default {
   components: {
     ArticleCategory,
     ArticleHot,
     ArticleRecommend,
-  }
+  },
+  async asyncData({ app, params }) {
+    
+    let id = params.id
+
+    let [
+      articleData,
+      categoryData,
+      hotArticle,
+      topArticle,
+    ] = await Promise.all([
+      app.$axios.get(`${apiPath.baseUrl}${apiPath.v1.article}/${id}`),
+      app.$axios.get(`${apiPath.baseUrl}${apiPath.v1.category}?start=0&count=10sortBy=sort`),
+      app.$axios.get(`${apiPath.baseUrl}${apiPath.v1.article}/hot?start=0&count=10`),
+      app.$axios.get(`${apiPath.baseUrl}${apiPath.v1.article}/top?start=0&count=10`),
+    ])
+
+    let content_mkd = articleData.content_mkd
+
+    return {
+      articleData,
+      categoryData,
+      hotArticle,
+      topArticle,
+      content_mkd,
+    }
+  },
 }
 </script>
 

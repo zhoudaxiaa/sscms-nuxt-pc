@@ -6,16 +6,16 @@
  * @Version: 1.0
  * @LastEditors: zhoudaxiaa
  * @Date: 2019-04-19 15:14:01
- * @LastEditTime: 2019-05-20 14:19:00
+ * @LastEditTime: 2019-06-11 17:16:44
  -->
 <template>
   <!-- art: article -->
   <article class="art-list-item">
 
     <div class="art-cover">
-      <img class="art-img" src="//unsplash.it/240/150" alt="">
+      <img class="art-img" :src="article.cover_img">
       
-      <article-tag class="art-tag-wrap"></article-tag>
+      <article-tag :tag="article.from" class="art-tag-wrap"></article-tag>
 
     </div>
 
@@ -23,38 +23,38 @@
     <div class="art-attr-wrap">
       
       <h3 class="art-title">
-        <nuxt-link to="">
-          sscms 内容管理系统正式发布
+        <nuxt-link :to="`article/${article.id}`">
+          {{article.title}}
         </nuxt-link>
       </h3>
       
-      <p class="art-introduce">适得府君书雷锋精神垃圾分类设计啊安防连接收到拉法基谁拉的减肥啦时代峻峰四邻非旧识雷锋精神劳动节封龙山剪短发链接时理解的斐林试剂</p>
+      <p class="art-introduce">{{article.introduce}}</p>
       
       <!-- 文章属性列表开始 -->
       <ul class="art-attr-list">
         <li class="art-attr-list-item">
           <avatar-box
             link='/'
-            avatar="//unsplash.it/22/22"
-            name="周大侠啊">
+            :avatar="article.author.avatar"
+            :name="article.author.name">
           </avatar-box>
         </li>
         <li class="art-attr-list-item">
           <svg-text-box
             iconClass="time"
-            text="999">
+            :text="article.publish_time">
           </svg-text-box>
         </li>
         <li class="art-attr-list-item">
           <svg-text-box
             iconClass="view"
-            text="999">
+            :text="article.view_num">
           </svg-text-box>
         </li>
         <li class="art-attr-list-item">
           <svg-text-box
             iconClass="comment"
-            text="999">
+            :text="article.comment_id.length">
           </svg-text-box>
         </li>
       </ul>
@@ -62,7 +62,7 @@
 
       <nuxt-link
         class="view-art"
-        to="">
+        :to="`article/${article.id}`">
         阅读全文
       </nuxt-link>
 
@@ -78,6 +78,12 @@ import AvatarBox from '@/components/AvatarBox'
 
 export default {
   name: 'Item',
+  props: {
+    article: {
+      type: Object,
+      default: () => {}
+    }
+  },
   components: {
     ArticleTag,
     SvgTextBox,
