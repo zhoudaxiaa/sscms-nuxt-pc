@@ -1,6 +1,10 @@
-# sscms-nuxt-pc
+# sscms 系统的前端页面
 
-> My astounding Nuxt.js project
+> 技术栈nuxtjs, sass, axios, async/await 等
+
+![Screenshot 2019-06-11 23.30.29.png](https://i.loli.net/2019/06/11/5cffca08dfa5a23615.png)
+
+![Screenshot 2019-06-11 23.30.43.png](https://i.loli.net/2019/06/11/5cffca1d4705450047.png)
 
 ## Build Setup
 
